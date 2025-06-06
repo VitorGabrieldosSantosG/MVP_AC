@@ -1,0 +1,14 @@
+:root{
+    --branco : #FDFFFC;
+    --preto : #15191D;
+    --azul : #33658A;
+    --amarelo : #F6AE2D;
+    --marrom : #7A542E;
+    --verde : #0C7C59;
+
+    --fonteTitulo : "Lato", sans-serif;
+    --fonteTexto: "Noto Sans", sans-serif;
+    --fonteTexto2 : "Roboto Mono", monospace;
+    --fonteLogo : "Jaro", sans-serif;
+
+}
