@@ -1,0 +1,73 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 20rem;
+    background-color: var(--branco);
+    border: 0.15px solid white;
+    border-radius: 15px;
+    box-shadow: 0 0.5rem 0.5rem 0 black;
+}
+
+.campoLogo {
+    display: flex;
+    flex-direction: column;
+}
+
+.imagemLogo {
+    width: 2rem;
+    height: 2rem;
+}
+
+.textoLogo {
+    font-family: var(--fonteTitulo);
+    font-size: 1.6rem;
+    color: var(--marrom);
+}
+
+/* CAMPO LOGIN */
+
+.campoLogin {
+    display: flex;
+    flex-direction: column;
+}
+
+.labelUsuario, .labeloSenha {
+    font-family: var(--fonteTitulo);
+    font-size: 1.3rem;
+    color: var(--preto);
+}
+
+.inputUsuario, .inputSenha {
+    width: 80%;
+    margin: auto;
+    height: 2rem;
+    background-color: var(--branco);
+    border: 5px solid var(--preto);
+    border-radius: 15px;
+    font-family: var(--fonteTexto);
+}
+
+.botaoLogin,.botaoLoginGoogle {
+    width: 80%;
+    margin: auto;
+    height: 5rem;
+    background-color: var(--verde);
+    font-family: var(--fonteTexto2);
+    cursor: pointer;
+}
+
+/* INFORMAÇÕES LOGIN */
+
+.informacoesLogin {
+    display: flex;
+    flex-direction: column;
+    border: 0.5rem solid var(--preto);
+    border-radius: 15px;
+    box-shadow: 0 0.5rem 0.5rem 0 var(--preto);
+}
+
+.textoUsuarioPadrao, .textoSenhaPadrao {
+    font-family: var(--fonteTexto);
+    color: var(--preto);
+}
