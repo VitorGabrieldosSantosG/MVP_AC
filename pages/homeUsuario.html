@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/variaveis.css">
+    <link rel="stylesheet" href="../assets/css/homeUsuario.css">
+
+</head>
+
+<body>
+    <aside class="barraLateral">
+        <div class="campoLogo">
+            <img src="../assets/imagens/icones/logo.png" alt="Logo" class="imagemLogo">
+            <p class="textoLogo">Ação Cidadã</p>
+        </div>
+        <nav class="menuLateral">
+            <div class="campoLateral">
+                <img src="../assets/imagens/icones/home.png" alt="Home" class="iconeHome">
+                <p class="textoMenuLateral">Home</p>
+            </div>
+            <div class="campoLateral" onclick="adicionarEvento()">
+                <img src="../assets/imagens/icones/aceitar_black.png" alt="Adicionar Evento" class="iconeAdicionar">
+                <p class="textoMenuLateral">Realizar Reclamação!!</p>
+            </div>
+            <div class="campoLateral">
+                <img src="../assets/imagens/icones/duvidas.png" alt="Dúvidas" class="iconeDuvidas">
+                <p class="textoMenuLateral">Dúvidas?</p>
+            </div>
+            <div class="campoLateral">
+                <img src="../assets/imagens/icones/configuracoes.png" alt="Configurações" class="iconeConfiguracoes">
+                <p class="textoMenuLateral">Configurações</p>
+            </div>
+            <div class="campoLateral">
+                <img src="../assets/imagens/icones/usuario.png" alt="Configurações" class="iconeConfiguracoes">
+                <p class="textoMenuLateral">Conta</p>
+            </div>
+
+
+        </nav>
+    </aside>
+
+    <!-- Navbar para Mobile -->
+    <nav class="navbarMobile">
+        <div class="campoLogo">
+            <img src="../assets/imagens/icones/logo.png" alt="Logo" class="imagemLogo">
+            <p class="textoLogo">Ação Cidadã</p>
+        </div>
+        <img src="../assets/imagens/icones/menu.png" alt="Configurações">
+    </nav>
+
+    <main class="conteudoPrincipal">
+        <div class="feed" id="feed">
+            <div class="containerEvento">
+                <div class="carroselContainer">
+                    <button class="carroselBtn left">&#10094;</button>
+                    <div class="carroselImagens">
+                        <img src="../assets/imagens/imagensEventos/Evento1/buracoEstrada1.jpg" alt="Evento 1"
+                            class="imagemEvento ativa">
+                        <img src="../assets/imagens/imagensEventos/Evento1/buracoEstrada2.jpg" alt="Evento 2"
+                            class="imagemEvento">
+                    </div>
+                    <button class="carroselBtn right">&#10095;</button>
+                </div>
+                <div class="campoOpcoes">
+
+                    <div class="opcao">
+                        <img src="../assets/imagens/icones/megaphone.png" alt="Denunciar" class="iconeOpcoes">
+                        <p class="textoOpcao"><b>1000</b> reclamações</p>
+                    </div>
+                    <div class="opcao">
+                        <img src="../assets/imagens/icones/denunciar.png" alt="Denunciar" class="iconeOpcoes">
+                        <p class="textoOpcao">Denunciar Post</p>
+                    </div>
+                    <div class="opcao">
+                        <img src="../assets/imagens/icones/comunidade.png" alt="comunidade" class="iconeOpcoes">
+                        <p class="textoOpcao">Comentários</p>
+                    </div>
+
+                </div>
+                <p class="campoDescricaoEvento">Descrição do evento aqui</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé para Mobile -->
+    <footer class="rodapeMobile">
+        <img src="../assets/imagens/icones/home.png" alt="Home">
+        <img src="../assets/imagens/icones/aceitar_black.png" alt="Adicionar Evento"onclick="adicionarEvento()">
+        <img src="../assets/imagens/icones/usuario.png" alt="Usuario">
+    </footer>
+
+    <script>
+        function inicializarCarrossel(carrosel) {
+            const imagens = carrosel.querySelectorAll(".imagemEvento");
+            const botaoEsquerda = carrosel.querySelector(".carroselBtn.left");
+            const botaoDireita = carrosel.querySelector(".carroselBtn.right");
+            let indiceAtual = 0;
+
+            function mostrarImagem(index) {
+                imagens.forEach((img, i) => {
+                    img.classList.toggle("ativa", i === index);
+                });
+            }
+
+            mostrarImagem(indiceAtual); // mostra a primeira ao iniciar
+
+            botaoEsquerda?.addEventListener("click", () => {
+                indiceAtual = (indiceAtual - 1 + imagens.length) % imagens.length;
+                mostrarImagem(indiceAtual);
+            });
+
+            botaoDireita?.addEventListener("click", () => {
+                indiceAtual = (indiceAtual + 1) % imagens.length;
+                mostrarImagem(indiceAtual);
+            });
+
+            let startX = 0;
+
+            carrosel.addEventListener("touchstart", e => {
+                startX = e.touches[0].clientX;
+            });
+
+            carrosel.addEventListener("touchend", e => {
+                const endX = e.changedTouches[0].clientX;
+                const diff = endX - startX;
+
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        indiceAtual = (indiceAtual - 1 + imagens.length) % imagens.length;
+                    } else {
+                        indiceAtual = (indiceAtual + 1) % imagens.length;
+                    }
+                    mostrarImagem(indiceAtual);
+                }
+            });
+        }
+
+        // Inicializa os carrosseis existentes
+        document.querySelectorAll(".carroselContainer").forEach(inicializarCarrossel);
+
+        function adicionarEvento(){
+            window.location.href = "./adicionarEvento.html"
+        }
+    </script>
+
+</body>
+
+</html>

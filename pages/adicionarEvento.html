@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Evento</title>
+    <link rel="stylesheet" href="../assets/css/variaveis.css">
+    <link rel="stylesheet" href="../assets/css/adicionarEvento.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <form id="formEvento">
+           
+            <!-- Etapa 1 -->
+            <div class="step active">
+                 <h1 class="tituloPasso">Para realizar uma denúncia, primeiro preencha: </h1>
+                <input type="text" placeholder="Nome do evento" required>
+                <input type="text" placeholder="Cidade" required>
+                <input type="text" placeholder="Endereço" required>
+                <input type="text" placeholder="Número" required>
+                <input type="text" placeholder="Complemento">
+                <input type="text" placeholder="Referência">
+            </div>
+
+            <!-- Etapa 2 -->
+            <div class="step">
+                <label>Fotos do evento:</label>
+                <input type="file" multiple required>
+            </div>
+
+            <!-- Etapa 3 -->
+            <div class="step">
+                <h1 class="tituloPasso">Agora preencha o restante das informações:</h1>
+                <label for="dataInicio" class="labelData">Data de início do evento: </label>
+                <input id="dataInicio" type="date" required>
+                <select required>
+                    <option value="">Gravidade do problema</option>
+                    <option value="leve">Leve</option>
+                    <option value="moderado">Moderado</option>
+                    <option value="grave">Grave</option>
+                </select>
+                <textarea placeholder="Descrição do problema" rows="5" required></textarea>
+            </div>
+
+            <!-- Etapa 4 -->
+            <div class="step">
+                <div class="success-message">
+                    Evento criado com sucesso!
+                    <br>
+                    Ele será analisado por nossa equipe, e você rebera notícias sobre ele!!
+                </div>
+                <button class="botaoVoltarHome" id="btnVoltarHome">Voltar para o Início</button>
+            </div>
+
+            <div class="buttons">
+                <button type="button" id="btnVoltar">Voltar</button>
+                <button type="button" id="btnProximo">Próximo</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const steps = document.querySelectorAll(".step");
+        const progressBar = document.getElementById("progressBar");
+        const btnProximo = document.getElementById("btnProximo");
+        const btnVoltar = document.getElementById("btnVoltar");
+        const btnVoltarHome = document.getElementById("btnVoltarHome");
+        let passoAtual = 0;
+
+        function atualizarPasso() {
+            steps.forEach((step, index) => {
+                step.classList.toggle("active", index === passoAtual);
+            });
+            progressBar.style.width = `${(passoAtual) / (steps.length - 1) * 100}%`;
+
+
+            btnVoltar.classList.add("btnVoltar");
+            btnProximo.classList.add("btnProximo");
+            btnVoltar.style.display = passoAtual === 0 ? "none" : "inline-block";
+            btnProximo.textContent = passoAtual === steps.length - 2 ? "Finalizar" : "Próximo";
+            if (passoAtual === steps.length - 1) {
+                btnVoltar.style.display = "none";
+                btnProximo.style.display = "none";
+                btnVoltarHome.classList.add("btnVoltarHome");
+                btnVoltarHome.style.display = "block";
+            }
+        }
+
+        btnProximo.addEventListener("click", () => {
+            if (passoAtual < steps.length - 1) {
+                passoAtual++;
+                atualizarPasso();
+            }
+        });
+
+        btnVoltar.addEventListener("click", () => {
+            if (passoAtual > 0) {
+                passoAtual--;
+                atualizarPasso();
+            }
+        });
+
+        btnVoltarHome.addEventListener("click", () => {
+            window.location.href="./homeUsuario.html";
+        })
+
+        atualizarPasso();
+    </script>
+</body>
+
+</html>

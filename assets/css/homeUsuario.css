@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonteTexto);
+    background-color: var(--branco);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.campoLogo {
+    display: flex;
+    align-items: center;
+}
+
+.imagemLogo {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.textoLogo {
+    font-family: var(--fonteLogo);
+    font-size: 1.5rem;
+    color: var(--amarelo);
+    margin-left: 0.75rem;
+}
+
+.conteudoPrincipal {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.feed {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.containerEvento {
+    background-color: var(--branco);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1rem;
+}
+
+.carroselContainer {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.carroselImagens {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+.imagemEvento {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.imagemEvento.ativa {
+    display: block;
+}
+
+.carroselBtn {
+    position: absolute;
+    top: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    /* padding: 0.2rem 0.6rem; */
+    z-index: 1;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.carroselBtn.left {
+    left: 10px;
+}
+
+.carroselBtn.right {
+    right: 10px;
+}
+
+.campoOpcoes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.campoOpcoes img {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+.iconeOpcoes:hover {
+    background-color: var(--vermelho);
+    border-radius: 15px;
+}
+
+.campoDescricaoEvento {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.imagemEvento {
+    display: none; /* Esconde por padrão */
+}
+
+.imagemEvento.ativa {
+    display: block; /* Só a ativa aparece */
+}
+
+.opcao {
+    display: flex;
+}
+
+.textoOpcao {
+    font-family: var(--fonteTexto);
+    margin-left: 0.9rem;
+}
+
+/* === MOBILE FIRST === */
+.navbarMobile,
+.rodapeMobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.rodapeMobile {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #ccc;
+}
+
+.barraLateral {
+    display: none;
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 768px) {
+    .feed {
+        max-width: 95%;
+    }
+
+    .imagemEvento {
+        width: 100%;
+        height: 100%;
+    }
+
+    .campoOpcoes img {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    .carroselBtn {
+        display: none;
+    }
+
+    .textoOpcao {
+        display: none;
+    }
+
+}
+
+/* === DESKTOP === */
+@media (min-width: 768px) {
+    .navbarMobile,
+    .rodapeMobile {
+        display: none;
+    }
+
+    .barraLateral {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 18rem;
+        height: 100vh;
+        background-color: white;
+        border-right: 1px solid #ccc;
+        z-index: 1000;
+    }
+
+    .menuLateral {
+        margin: 0 1rem 0 1rem;
+    }
+
+    .campoLogo {
+        gap: 0.25rem;
+        margin: 3rem 0 3rem 1rem;
+    }
+
+    .campoLateral {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .textoLogo {
+        font-size: 1.6rem;
+    }
+
+    .textoMenuLateral {
+        margin-left: 2rem;
+        font-weight: 800;
+    }
+
+    .menuLateral img {
+        width: 1.8rem;
+        height: 1.8rem;
+        cursor: pointer;
+    }
+
+    .conteudoPrincipal {
+        margin-left: 10rem;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
