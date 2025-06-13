@@ -182,12 +182,14 @@ body {
         display: none;
     }
 
-    .textoOpcao {
-        font-size: 0.6rem;
+    .opcao {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .textoOpcao:nth-child(3){
-        display: none;
+    .textoOpcao {
+        font-size: 0.6rem;
     }
 
 }
