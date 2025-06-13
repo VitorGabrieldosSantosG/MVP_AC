@@ -16,10 +16,10 @@
         </div>
 
         <form id="formEvento">
-           
+
             <!-- Etapa 1 -->
             <div class="step active">
-                 <h1 class="tituloPasso">Para realizar uma denúncia, primeiro preencha: </h1>
+                <h1 class="tituloPasso">Para realizar uma denúncia, primeiro preencha: </h1>
                 <input type="text" placeholder="Nome do evento" required>
                 <input type="text" placeholder="Cidade" required>
                 <input type="text" placeholder="Endereço" required>
@@ -37,7 +37,7 @@
             <!-- Etapa 3 -->
             <div class="step">
                 <h1 class="tituloPasso">Agora preencha o restante das informações:</h1>
-                <label for="dataInicio" class="labelData">Data de início do evento: </label>
+                <label for="dataInicio" class="labelData">Data de início do problema: </label>
                 <input id="dataInicio" type="date" required>
                 <select required>
                     <option value="">Gravidade do problema</option>
@@ -51,9 +51,9 @@
             <!-- Etapa 4 -->
             <div class="step">
                 <div class="success-message">
-                    Evento criado com sucesso!
+                    Problema denunciado com sucesso!
                     <br>
-                    Ele será analisado por nossa equipe, e você rebera notícias sobre ele!!
+                    Ele será analisado por nossa equipe, logo você irá receber notícias sobre ele!!
                 </div>
                 <button class="botaoVoltarHome" id="btnVoltarHome">Voltar para o Início</button>
             </div>
@@ -107,7 +107,7 @@
         });
 
         btnVoltarHome.addEventListener("click", () => {
-            window.location.href="./homeUsuario.html";
+            window.location.href = "./homeUsuario.html";
         })
 
         atualizarPasso();

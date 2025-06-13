@@ -183,6 +183,10 @@ body {
     }
 
     .textoOpcao {
+        font-size: 0.6rem;
+    }
+
+    .textoOpcao:nth-child(3){
         display: none;
     }
 
